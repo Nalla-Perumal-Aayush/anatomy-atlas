@@ -1,0 +1,74 @@
+{
+ "bundles": [
+  {
+   "id": "thorax",
+   "label": "Thorax",
+   "count": 426,
+   "model": "thorax.glb",
+   "content": "thorax.content.json"
+  },
+  {
+   "id": "abdomen",
+   "label": "Abdomen",
+   "count": 225,
+   "model": "abdomen.glb",
+   "content": "abdomen.content.json"
+  },
+  {
+   "id": "pelvis",
+   "label": "Pelvis and perineum",
+   "count": 189,
+   "model": "pelvis.glb",
+   "content": "pelvis.content.json"
+  },
+  {
+   "id": "neck",
+   "label": "Neck",
+   "count": 208,
+   "model": "neck.glb",
+   "content": "neck.content.json"
+  },
+  {
+   "id": "head",
+   "label": "Head",
+   "count": 618,
+   "model": "head.glb",
+   "content": "head.content.json"
+  },
+  {
+   "id": "upper_limb_r",
+   "label": "Right upper limb",
+   "count": 278,
+   "model": "upper_limb_r.glb",
+   "content": "upper_limb_r.content.json"
+  },
+  {
+   "id": "upper_limb_l",
+   "label": "Left upper limb",
+   "count": 279,
+   "model": "upper_limb_l.glb",
+   "content": "upper_limb_l.content.json"
+  },
+  {
+   "id": "lower_limb_r",
+   "label": "Right lower limb",
+   "count": 347,
+   "model": "lower_limb_r.glb",
+   "content": "lower_limb_r.content.json"
+  },
+  {
+   "id": "lower_limb_l",
+   "label": "Left lower limb",
+   "count": 347,
+   "model": "lower_limb_l.glb",
+   "content": "lower_limb_l.content.json"
+  },
+  {
+   "id": "brain",
+   "label": "Brain and spinal cord",
+   "count": 236,
+   "model": "brain.glb",
+   "content": "brain.content.json"
+  }
+ ]
+}

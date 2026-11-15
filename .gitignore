@@ -1,0 +1,9 @@
+node_modules/
+web/dist/
+build/artifact/
+build/*/*.raw.glb
+build/*/meshopt/
+__pycache__/
+*.blend
+bpyenv/
+build/*/draco/

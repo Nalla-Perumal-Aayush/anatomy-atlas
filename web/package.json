@@ -1,0 +1,28 @@
+{
+  "name": "anatomy-atlas",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "build:artifact": "tsc --noEmit && VITE_MODELS_B64=1 VITE_DRACO_JS=1 vite build --outDir ../build/artifact --emptyOutDir && rm -f ../build/artifact/draco/*.wasm ../build/artifact/draco/draco_wasm_wrapper.js && node scripts/b64.mjs ../build/artifact/models/body"
+  },
+  "dependencies": {
+    "@react-three/drei": "^9.122.0",
+    "@react-three/fiber": "^8.17.10",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "three": "^0.170.0",
+    "zustand": "^5.0.2"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@types/three": "^0.170.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.11"
+  }
+}

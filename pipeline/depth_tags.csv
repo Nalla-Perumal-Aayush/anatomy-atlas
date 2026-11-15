@@ -1,0 +1,72 @@
+name,depth,note
+# Depth layers: 1 skin, 2 superficial fascia (cutaneous nerves, superficial veins, superficial nodes), 3 deep fascia,
+# 4 superficial muscles, 5 deep muscles, 6 deep nerves and vessels, 7 bones joints ligaments.
+# Anything not listed gets a default from its tissue type (see export.py). DRAFT: to be checked by reviewers.
+# --- layer 2: structures in the superficial fascia ---
+Cephalic vein.r,2,superficial vein
+Basilic vein.r,2,superficial vein
+Median cubital vein.r,2,superficial vein
+Median antebrachial vein.r,2,superficial vein
+Dorsal venous network of hand.r,2,superficial vein
+Dorsal digital veins of hand.r,2,superficial vein
+Palmar digital veins.r,2,superficial vein
+Medial brachial cutaneous nerve.r,2,cutaneous nerve
+Medial antebrachial cutaneous nerve.r,2,cutaneous nerve
+Anterior branch of medial antebrachial cutaneous nerve.r,2,cutaneous nerve
+Posterior branch of medial antebrachial cutaneous nerve.r,2,cutaneous nerve
+Lateral antebrachial cutaneous nerve.r,2,cutaneous nerve
+Posterior antebrachial cutaneous nerve.r,2,cutaneous nerve
+Superior lateral brachial cutaneous nerve.r,2,cutaneous nerve
+Inferior lateral brachial cutaneous nerve.r,2,cutaneous nerve
+Dorsal branch of ulnar nerve.r,2,cutaneous on dorsum of hand
+Dorsal digital branches of radial nerve.r,2,cutaneous
+Dorsal digital branches of ulnar nerve.r,2,cutaneous
+Palmar branch of median nerve.r,2,cutaneous
+Palmar branch of ulnar nerve.r,2,cutaneous
+Cubital nodes.r,2,superficial lymph nodes
+Supratrochlear nodes.r,2,superficial lymph nodes
+# --- layer 3: deep fascia items stored with non-fascia materials ---
+Superficial transverse metacarpal ligament.r,3,part of palmar fascia
+Extensor retinaculum of wrist.r,3,retinaculum
+Flexor retinaculum of wrist.r,3,retinaculum
+# --- layer 4: superficial muscles ---
+Clavicular head of pectoralis major muscle.r,4,
+Sternocostal head of pectoralis major muscle.r,4,
+Latissimus dorsi muscle.r,4,
+Descending part of trapezius muscle.r,4,
+Transverse part of trapezius muscle.r,4,
+Ascending part of trapezius muscle.r,4,
+Clavicular part of deltoid muscle.r,4,
+Acromial part of deltoid muscle.r,4,
+Scapular spinal part of deltoid muscle.r,4,
+Long head of biceps brachii.r,4,
+Short head of biceps brachii.r,4,
+Long head of triceps brachii.r,4,
+Lateral head of triceps brachii.r,4,
+Brachioradialis muscle.r,4,
+Superficial head of pronator teres.r,4,
+Deep head of pronator teres.r,4,kept with pronator teres
+Flexor carpi radialis.r,4,
+Palmaris longus muscle.r,4,
+Humeral head of flexor carpi ulnaris.r,4,
+Ulnar head of flexor carpi ulnaris.r,4,
+Extensor carpi radialis longus.r,4,
+Extensor carpi radialis brevis.r,4,
+Extensor digitorum.r,4,
+Extensor digiti minimi.r,4,
+Humeral head of extensor carpi ulnaris.r,4,
+Ulnar head of extensor carpi ulnaris.r,4,
+Anconeus muscle.r,4,
+Abductor pollicis brevis.r,4,thenar superficial
+Superficial head of flexor pollicis brevis.r,4,thenar superficial
+Abductor digiti minimi of hand.r,4,hypothenar superficial
+Flexor digiti minimi of hand.r,4,hypothenar superficial
+# --- layer 5 notes (deep is the default for muscles; listed only where worth flagging) ---
+Humero-ulnar head of flexor digitorum superficialis.r,5,intermediate layer of forearm; reviewers may prefer 4
+Radial head of flexor digitorum superficialis.r,5,intermediate layer of forearm; reviewers may prefer 4
+# --- layer 6: deep lymph nodes ---
+Anterior axillary nodes.r,6,
+Apical axillary nodes.r,6,
+Central axillary nodes.r,6,
+Lateral axillary nodes.r,6,
+Posterior axillary nodes.r,6,
