@@ -9,6 +9,8 @@ pipeline/   Python scripts that turn the Z-Anatomy .blend into web-ready files
   export.py         main exporter (uses the bpy package, no Blender app needed)
   compress.sh       compresses every region bundle (draco or meshopt)
   inventory.py      counts what the .blend holds, by system and region
+  coverage.py       compares the atlas with Terminologia Anatomica 2
+  checklist.py      checks the atlas against a first-year structure list
   depth_tags.csv    which layer each structure sits in (draft, needs review)
   TA2.csv           Terminologia Anatomica 2 table, used for Latin names
   inspect_*.py      small helpers used to explore the .blend file
@@ -16,6 +18,7 @@ build/body/         last pipeline output: manifest, metadata, text per region, r
 web/                the viewer: Vite + React + React Three Fiber
 tools/              gltf-transform CLI setup and the headless screenshot test
 LICENSES.md         credits for the models and text
+docs/               project documentation (PDF) and the script that builds it
 ```
 
 ## 1. Get the data
@@ -75,7 +78,7 @@ The viewer loads the regions one after another (thorax first, brain last), so th
 
 ## 5. Before testers see it
 
-- Set `FEEDBACK_FORM_URL` in `web/src/config.ts` to a Google Form link. Until then, the report button lets testers copy their report text.
+- Error reports go to the project's Google Form (`FEEDBACK_FORM_URL` and `FEEDBACK_FIELDS` in `web/src/config.ts`). The report button fills in the structure and layer; responses collect in the form's linked Google Sheet. If the form changes, take the new field ids from its "Get pre-filled link".
 - Have a professor check the layers. Muscles count as superficial (layer 4) if they match the `SUPERFICIAL_MUSCLE` list in `export.py`. Cutaneous nerves and superficial veins go to layer 2 by the `SUPERFICIAL_NV` list. Anything else can be overridden per structure in `pipeline/depth_tags.csv`, which works for both sides.
 - Read `build/body/report.txt`. It lists the structures with no description, and the known gaps in the source data.
 
