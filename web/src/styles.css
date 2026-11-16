@@ -304,3 +304,6 @@ h1, h2, h3 { margin: 0; }
 }
 .error-chip { background: rgba(179, 38, 30, 0.35); }
 .group-dot { background: transparent; border: 2px solid var(--accent); }
+.foot-links { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
+a.link { text-decoration: none; }
+.modal .facts { margin: 4px 0; }

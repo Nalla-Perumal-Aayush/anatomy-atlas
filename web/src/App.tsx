@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import Viewer from './Viewer'
 import Sidebar from './Sidebar'
 import InfoPanel from './InfoPanel'
-import { FEEDBACK_FORM_URL, MODEL_DIR, TISSUE_LABEL } from './config'
+import { FEEDBACK_FORM_URL, LAYERS, MODEL_DIR, TISSUE_LABEL, feedbackUrl } from './config'
 import { useAtlas } from './store'
 import type { Bundle, Structure } from './types'
 
@@ -27,7 +27,43 @@ function ReportModal({ id, onClose }: { id: string; onClose: () => void }) {
   const s = useAtlas((st) => st.byId[id])
   const [note, setNote] = useState('')
   const [copied, setCopied] = useState(false)
-  const report = `Structure: ${s.name} (${s.id})\nLayer: ${s.depth}\nWhat is wrong:\n${note}`
+  const layer = LAYERS.find((l) => l.depth === s.depth)
+  const structure = `${s.name}${s.side !== 'midline' ? ` (${s.side})` : ''} [${s.id}]`
+  const layerText = `${s.depth}: ${layer?.label ?? ''}`
+  const report = `Structure: ${structure}\nLayer: ${layerText}\nWhat is wrong:\n${note}`
+
+  if (FEEDBACK_FORM_URL) {
+    return (
+      <div className="modal-back" onClick={onClose}>
+        <div className="modal" onClick={(e) => e.stopPropagation()}>
+          <h2>Report an error</h2>
+          <p>
+            The feedback form opens in a new tab with this structure and its layer already filled in. Describe what
+            looks wrong there and submit it.
+          </p>
+          <dl className="facts">
+            <dt>Structure</dt>
+            <dd>{structure}</dd>
+            <dt>Layer</dt>
+            <dd>{layerText}</dd>
+          </dl>
+          <div className="modal-actions">
+            <a
+              className="btn primary"
+              href={feedbackUrl(structure, layerText)}
+              target="_blank"
+              rel="noreferrer"
+              onClick={() => setTimeout(onClose, 300)}
+            >
+              Open the form
+            </a>
+            <button onClick={onClose}>Cancel</button>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className="modal-back" onClick={onClose}>
       <div className="modal" onClick={(e) => e.stopPropagation()}>
@@ -41,11 +77,6 @@ function ReportModal({ id, onClose }: { id: string; onClose: () => void }) {
           rows={5}
         />
         <div className="modal-actions">
-          {FEEDBACK_FORM_URL ? (
-            <a className="btn primary" href={`${FEEDBACK_FORM_URL}`} target="_blank" rel="noreferrer">
-              Open feedback form
-            </a>
-          ) : null}
           <button
             className="primary"
             onClick={() => {
@@ -56,9 +87,7 @@ function ReportModal({ id, onClose }: { id: string; onClose: () => void }) {
           </button>
           <button onClick={onClose}>Close</button>
         </div>
-        {!FEEDBACK_FORM_URL && (
-          <p className="hint">Paste the copied report into the feedback sheet your coordinator shared.</p>
-        )}
+        <p className="hint">Paste the copied report into the feedback sheet your coordinator shared.</p>
       </div>
     </div>
   )

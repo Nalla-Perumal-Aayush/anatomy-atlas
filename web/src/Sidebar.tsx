@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react'
-import { APP_LABEL, LAYERS, SYSTEMS, TISSUE_LABEL } from './config'
+import { APP_LABEL, FEEDBACK_FORM_URL, LAYERS, SYSTEMS, TISSUE_LABEL, feedbackUrl } from './config'
 import { useAtlas, type ViewPreset } from './store'
 import type { Structure } from './types'
 
@@ -248,9 +248,16 @@ export default function Sidebar({ onAbout }: { onAbout: () => void }) {
 
       <footer className="side-foot">
         <button onClick={st.reset}>Reset everything</button>
-        <button className="link" onClick={onAbout}>
-          About and credits
-        </button>
+        <span className="foot-links">
+          {FEEDBACK_FORM_URL && (
+            <a className="link" href={feedbackUrl()} target="_blank" rel="noreferrer">
+              Send feedback
+            </a>
+          )}
+          <button className="link" onClick={onAbout}>
+            About and credits
+          </button>
+        </span>
       </footer>
     </aside>
   )

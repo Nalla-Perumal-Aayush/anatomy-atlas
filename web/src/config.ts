@@ -9,9 +9,20 @@ export const DRACO_DIR = './draco/'
 export const MODELS_AS_B64: boolean = import.meta.env.VITE_MODELS_B64 === '1'
 export const DRACO_JS_ONLY: boolean = import.meta.env.VITE_DRACO_JS === '1'
 
-// Paste a Google Form or Formspree link here to collect error reports.
-// Left empty, the report button shows the text for the tester to copy instead.
-export const FEEDBACK_FORM_URL = ''
+// Google Form that collects error reports. Responses land in its linked Google Sheet.
+// Field ids come from the form's "Get pre-filled link". Set FEEDBACK_FORM_URL to '' to fall back
+// to a copy-the-report dialog.
+export const FEEDBACK_FORM_URL =
+  'https://docs.google.com/forms/d/e/1FAIpQLSfyQ50CkYAwKubGzvUjQoZAZcu-iGD5OvhSFvHIvxO7BkVKUg/viewform'
+export const FEEDBACK_FIELDS = { structure: 'entry.1202770717', layer: 'entry.131822342' }
+
+/** Form link with the structure and layer filled in (or blank for general feedback). */
+export function feedbackUrl(structure?: string, layer?: string): string {
+  const q = new URLSearchParams({ usp: 'pp_url' })
+  if (structure) q.set(FEEDBACK_FIELDS.structure, structure)
+  if (layer) q.set(FEEDBACK_FIELDS.layer, layer)
+  return `${FEEDBACK_FORM_URL}?${q.toString()}`
+}
 
 export const LAYERS: { depth: number; label: string; hint: string }[] = [
   { depth: 1, label: 'Skin', hint: 'Surface regions of the body' },
