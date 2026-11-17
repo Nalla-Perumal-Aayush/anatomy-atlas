@@ -4,6 +4,7 @@ import Sidebar from './Sidebar'
 import InfoPanel from './InfoPanel'
 import { FEEDBACK_FORM_URL, LAYERS, MODEL_DIR, TISSUE_LABEL, feedbackUrl } from './config'
 import { useAtlas } from './store'
+import { useEmbedBridge } from './embed'
 import type { Bundle, Structure } from './types'
 
 function Tooltip() {
@@ -122,6 +123,7 @@ function About({ onClose }: { onClose: () => void }) {
 }
 
 export default function App() {
+  useEmbedBridge()
   const setData = useAtlas((s) => s.setData)
   const selected = useAtlas((s) => s.selected)
   const [error, setError] = useState<string | null>(null)
