@@ -124,6 +124,8 @@ function About({ onClose }: { onClose: () => void }) {
 
 export default function App() {
   useEmbedBridge()
+  // inside another page (the study app's 3D card) only the body is shown; that page supplies the controls
+  const embedded = window.parent !== window
   const setData = useAtlas((s) => s.setData)
   const selected = useAtlas((s) => s.selected)
   const [error, setError] = useState<string | null>(null)
@@ -153,13 +155,13 @@ export default function App() {
   }, [])
 
   return (
-    <div className="app">
-      <Sidebar onAbout={() => setAbout(true)} />
+    <div className={embedded ? 'app embedded' : 'app'}>
+      {!embedded && <Sidebar onAbout={() => setAbout(true)} />}
       <main className="stage">
         {error ? <div className="error">Could not load data: {error}</div> : <Viewer />}
-        <div className="stage-hint">Drag to rotate · right-drag to pan · scroll to zoom · click a structure</div>
+        {!embedded && <div className="stage-hint">Drag to rotate · right-drag to pan · scroll to zoom · click a structure</div>}
       </main>
-      {selected && <InfoPanel key={selected} onReport={setReportId} />}
+      {selected && !embedded && <InfoPanel key={selected} onReport={setReportId} />}
       <Tooltip />
       {reportId && <ReportModal id={reportId} onClose={() => setReportId(null)} />}
       {about && <About onClose={() => setAbout(false)} />}

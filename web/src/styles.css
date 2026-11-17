@@ -307,3 +307,7 @@ h1, h2, h3 { margin: 0; }
 .foot-links { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
 a.link { text-decoration: none; }
 .modal .facts { margin: 4px 0; }
+
+/* embedded in another page: the 3D stage fills the frame */
+.app.embedded, .app.embedded .stage { height: 100vh; min-height: 0; flex: 1; }
+.app.embedded { flex-direction: row; overflow: hidden; }
